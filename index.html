@@ -1276,6 +1276,53 @@
   </div>
 </section>
 
+<!-- FAQ -->
+<section style="padding:100px 5%;background:var(--bg);">
+  <div style="max-width:860px;margin:0 auto;">
+    <div class="section-eyebrow" style="text-align:center;">Got questions?</div>
+    <h2 class="section-title" style="text-align:center;margin-bottom:60px;">Frequently Asked Questions</h2>
+    <div id="faq-list"></div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var faqs = [
+    ["What is RankForged AI?","RankForged AI is an AI-powered local SEO platform built for small businesses and marketing agencies. It automates the time-consuming parts of local SEO — auditing, rank tracking, content creation, directory management, and more — so you can focus on growing your business instead of chasing rankings."],
+    ["I don’t know much about SEO. Can I still use RankForged AI?","Absolutely. RankForged AI is designed so you don’t need to be an SEO expert. Our onboarding wizard walks you through setup step by step, and the platform does the heavy lifting for you — from auditing your listings to generating optimized content."],
+    ["How does RankForged AI help my business show up in Google?","We connect directly to Google Search Console to pull your real ranking data, identify what’s holding you back, and give you actionable fixes. Combined with our AI content tools, directory sync, and business profile optimization, we help you climb local search results faster."],
+    ["What’s the difference between local SEO and regular SEO?","Local SEO focuses on getting your business found by people searching nearby — think “plumber near me” or “best pizza in Charlotte.” RankForged AI specializes in exactly this, helping you dominate your local market with tools built specifically for location-based search."],
+    ["How long does it take to see results?","Local SEO is a long game, but most businesses start seeing measurable improvements within 30–90 days of consistent effort. RankForged AI speeds up the process by automating tasks that would normally take hours each week."],
+    ["I’m an agency. Can I manage multiple clients?","Yes — our Agency plan is built for this. You can manage multiple business profiles from a single dashboard, each with their own SEO data, content, and reporting. It’s like having a full SEO team without the overhead."],
+    ["What does the onboarding process look like?","After signing up, you’ll go through a quick 6-step wizard where you enter your business details, connect your Google account, and set up your API integrations. Most users are fully set up in under 15 minutes."],
+    ["Does RankForged AI post to social media?","Yes. You can connect your LinkedIn account and publish AI-generated posts directly from the platform. Instagram and Facebook publishing are on our roadmap and coming soon."],
+    ["Will RankForged AI work with my existing tools?","RankForged AI integrates with Google Search Console, Google Business Profile, and major AI providers like OpenAI, Anthropic, and Gemini. We’re adding more integrations regularly."],
+    ["Is my business data safe?","Yes. Your data is stored in an encrypted, row-level secured database — meaning only your account can access your information. We never sell your data or share it with third parties for marketing purposes."],
+    ["What happens if I cancel my subscription?","You can cancel anytime with no penalties. Your account stays active until the end of your billing period, and your data is retained for 30 days after cancellation in case you change your mind."],
+    ["Do I need to provide my own API keys?","For advanced AI features (content generation, audits), yes — you’ll connect your own API keys for services like OpenAI or Anthropic. This keeps your costs transparent and your data under your control. Basic features work without any API keys."],
+    ["How is RankForged AI different from other SEO tools?","Most SEO tools show you data and leave you to figure out what to do with it. RankForged AI combines data, AI, and automation in one platform — it doesn’t just tell you what’s wrong, it helps you fix it. And it’s built specifically for local SEO, not watered-down general SEO."],
+    ["What plans are available?","We offer four plans — Solo, Deluxe, Pro, and Agency — designed to fit businesses of every size. Check our pricing section to find the right fit, or start with a free trial to see the platform in action."],
+    ["How do I get started?","Click Sign Up, enter your activation key, and follow the onboarding wizard. You’ll be up and running in minutes. Have questions along the way? Reach out to us at hello@rankforgedai.com — we’re here to help."]
+  ];
+
+  var styles = "<style>.faq-item{border:1px solid var(--border);border-radius:12px;margin-bottom:12px;overflow:hidden;}.faq-q{width:100%;background:var(--card);border:none;color:var(--text);font-family:var(--body);font-size:16px;font-weight:600;text-align:left;padding:20px 24px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;}.faq-q:hover{background:var(--border2);}.faq-icon{color:var(--accent);font-size:20px;flex-shrink:0;transition:transform 0.2s;}.faq-a{background:var(--bg);color:var(--muted);font-size:15px;line-height:1.7;padding:0 24px;max-height:0;overflow:hidden;transition:max-height 0.3s ease,padding 0.3s ease;}.faq-item.open .faq-a{max-height:300px;padding:16px 24px 20px;}.faq-item.open .faq-icon{transform:rotate(45deg);}</style>";
+
+  document.head.insertAdjacentHTML("beforeend", styles);
+
+  var html = faqs.map(function(f, i){
+    return "<div class=\"faq-item\" id=\"faq-"+i+"\"><button class=\"faq-q\" onclick=\"toggleFaq("+i+")\" aria-expanded=\"false\">"+f[0]+"<span class=\"faq-icon\">+</span></button><div class=\"faq-a\">"+f[1]+"</div></div>";
+  }).join("");
+
+  document.getElementById("faq-list").innerHTML = html;
+
+  window.toggleFaq = function(i){
+    var item = document.getElementById("faq-"+i);
+    var isOpen = item.classList.contains("open");
+    document.querySelectorAll(".faq-item.open").forEach(function(el){ el.classList.remove("open"); el.querySelector(".faq-q").setAttribute("aria-expanded","false"); });
+    if(!isOpen){ item.classList.add("open"); item.querySelector(".faq-q").setAttribute("aria-expanded","true"); }
+  };
+})();
+</script>
 <!-- CTA -->
 <div class="cta-section">
   <div class="section-eyebrow" style="text-align:center;">Get started today</div>
@@ -1319,7 +1366,7 @@
       <div class="footer-col-title">Legal</div>
       <ul>
         <li><a href="/privacy-policy">Privacy Policy</a></li>
-        <li><a href="/terms-of-service">Terms of Service</a></li>
+        <li><a href="#">Terms of Service</a></li>
       </ul>
     </div>
   </div>
